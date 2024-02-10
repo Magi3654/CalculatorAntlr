@@ -1,0 +1,22 @@
+2023-11-23 13:58:42:347 grammar LogManager.java:25 before: (COMBINED_GRAMMAR Calculadora (RULES (RULE inicio (BLOCK (ALT operaciones { console.log('Hola') }))) (RULE operaciones (BLOCK (ALT expr))) (RULE expr (BLOCK (ALT expr MAS expr) (ALT NUM))) (RULE MAS (BLOCK (ALT '+'))) (RULE NUM (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE ESPACIOS (BLOCK (LEXER_ALT_ACTION (ALT [ \t\r\n]) skip)))))
+2023-11-23 13:58:42:364 grammar LogManager.java:25 after: (COMBINED_GRAMMAR Calculadora (RULES (RULE inicio (BLOCK (ALT operaciones { console.log('Hola') }))) (RULE operaciones (BLOCK (ALT expr))) (RULE expr (BLOCK (ALT expr MAS expr) (ALT NUM))) (RULE MAS (BLOCK (ALT '+'))) (RULE NUM (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE ESPACIOS (BLOCK (LEXER_ALT_ACTION (ALT [ \t\r\n]) skip)))))
+2023-11-23 13:58:42:396 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR Calculadora (RULES (RULE inicio (BLOCK (ALT operaciones { console.log('Hola') }))) (RULE operaciones (BLOCK (ALT expr))) (RULE expr (BLOCK (ALT expr MAS expr) (ALT NUM)))))
+2023-11-23 13:58:42:396 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR CalculadoraLexer (RULES (RULE MAS (BLOCK (ALT '+'))) (RULE NUM (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE ESPACIOS (BLOCK (LEXER_ALT_ACTION (ALT [ \t\r\n]) skip)))))
+2023-11-23 13:58:43:086 left-recursion LogManager.java:25 expr
+    :   ( {} NUM<tokenIndex=29> 
+        )
+        (
+          {this.precpred(this._ctx, 2)}?<p=2> MAS<tokenIndex=23> expr<tokenIndex=25,p=3>
+        )*
+    ;
+2023-11-23 13:58:43:086 grammar LogManager.java:25 added: (RULE expr (BLOCK (ALT (BLOCK (ALT {} (NUM (ELEMENT_OPTIONS (= tokenIndex 29))))) (* (BLOCK (ALT ({this.precpred(this._ctx, 2)}? (ELEMENT_OPTIONS (= p 2))) (MAS (ELEMENT_OPTIONS (= tokenIndex 23))) (expr (ELEMENT_OPTIONS (= tokenIndex 25) (= p 3)))))))))
+2023-11-23 13:58:43:086 semantics LogManager.java:25 tokens={EOF=-1, MAS=1, NUM=2, ESPACIOS=3}
+2023-11-23 13:58:43:086 semantics LogManager.java:25 strings={'+'=1}
+2023-11-23 13:58:43:117 LL1 LogManager.java:25 
+DECISION 0 in rule expr
+2023-11-23 13:58:43:158 LL1 LogManager.java:25 look=[null, null]
+2023-11-23 13:58:43:158 LL1 LogManager.java:25 LL(1)? false
+2023-11-23 13:58:43:180 action-translator LogManager.java:25 translate  console.log('Hola') 
+2023-11-23 13:58:43:180 action-translator LogManager.java:25 translate 
+2023-11-23 13:58:43:180 action-translator LogManager.java:25 translate this.precpred(this._ctx, 2)
+2023-11-23 13:58:43:180 action-translator LogManager.java:25 translate this.precpred(this._ctx, 2)
