@@ -22,7 +22,7 @@ const Page = () => {
     console.log(inputWithOutComments);
     if(/^[a-zA-Z0-9+\-*/().= \n\r]+$/.test(cleanInput)){
       const calculatedResult = analizar(cleanInput);
-      //console.log(calculatedResult);
+      console.log(calculatedResult);
       setResult(calculatedResult.toString());
     }else{
       setResult('Error de sintaxis')

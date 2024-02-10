@@ -26,7 +26,7 @@ export default class CustomVisitor extends CalculadoraVisitor {
 
 	// Visit a parse tree produced by CalculadoraParser#assign.
 	visitAssign(ctx) {
-		console.log(ctx.getText());
+		console.log(ctx.getText);
 		const id = ctx.ID().getText();
 		const value = this.visit(ctx.expr());
 		this.memory.set(id, value);
@@ -55,8 +55,8 @@ export default class CustomVisitor extends CalculadoraVisitor {
 	visitMulDiv(ctx) {
 		const left = this.visit(ctx.expr(0));
 		const right = this.visit(ctx.expr(1));
-		if (ctx.op.type === CalculadoraParser.MUL) return `${left} * ${right} = ${left * right}`;
-	  	return `${left} / ${right} = ${Math.floor(left / right)}`;	// Division Entera
+		if (ctx.op.type === CalculadoraParser.MUL) return left * right ;
+	  	return  Math.floor(left / right);	// Division Entera
 	}
 
 
@@ -64,8 +64,8 @@ export default class CustomVisitor extends CalculadoraVisitor {
 	visitAddSub(ctx) {
 		const left = this.visit(ctx.expr(0));
 		const right = this.visit(ctx.expr(1));
-		if (ctx.op.type === CalculadoraParser.ADD) return `${left} + ${right} = ${left + right}`;
-	  	return `${left} - ${right} = ${left - right}`;
+		if (ctx.op.type === CalculadoraParser.ADD) return left + right ;
+	  	return left - right;
 	}
 
 
