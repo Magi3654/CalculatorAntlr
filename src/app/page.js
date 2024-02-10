@@ -15,10 +15,13 @@ const Page = () => {
 
   const analizador = () => {
     const inputWithOutComments = expressions.replace(/(\/\/[^\n]*)|\/\*[\s\S]*?\*\//g, '')
-    
+    const inputLines = inputWithOutComments.split('\n'); // Dividir el input en líneas
+    const validLines = inputLines.filter(line => line.trim().length > 0); // Filtrar líneas vacías con trim(eliminar espacios en blanco)
+    const cleanInput = validLines.join('\n'); // Unir las líneas limpias nuevamente
+    console.log(cleanInput);
     console.log(inputWithOutComments);
-    if(/^[a-zA-Z0-9+\-*/().= \n\r]+$/.test(inputWithOutComments)){
-      const calculatedResult = analizar(inputWithOutComments);
+    if(/^[a-zA-Z0-9+\-*/().= \n\r]+$/.test(cleanInput)){
+      const calculatedResult = analizar(cleanInput);
       //console.log(calculatedResult);
       setResult(calculatedResult.toString());
     }else{
